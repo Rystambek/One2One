@@ -154,3 +154,26 @@ def contact(request:HttpRequest, id) -> JsonResponse:
         return JsonResponse({'status': 'ok'})
 
     
+def get_all(request:HttpRequest)->JsonResponse:
+    
+    contacts = Contact.objects.all()
+    data = {
+        'results':[]
+    }
+    for contact in contacts:
+        user = contact.user
+        data['results'].append({
+            'first_name':user.first_name,
+            'last_name':user.last_name,
+            'username':user.username,
+            'age':user.age,
+            'phone':contact.phone,
+            'address':contact.address,
+            'city' : contact.city
+           
+        })
+
+    return JsonResponse(data)
+
+
+
