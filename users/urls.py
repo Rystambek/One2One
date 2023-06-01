@@ -8,8 +8,8 @@ from .views import (
                      
 
 urlpatterns = [
-    path('/', get_users),
-    path('/<int:id>',get_user_id),
-    path('/<int:id>/contact/',contact),
-    path('/get-all',get_all)
+    path('', get_users),
+    path('<int:id>',get_user_id),
+    path('<int:id>/contact/',contact),
+    path('get-all',get_all)
 ]
