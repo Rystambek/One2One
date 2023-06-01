@@ -101,8 +101,7 @@ def contact(request:HttpRequest, id) -> JsonResponse:
             contact = Contact.objects.get(user = user)
         except ObjectDoesNotExist:
             return JsonResponse({'status': 'object does not exist!'})
-        
-        contact = Contact.objects.get(id = id)
+    
         return JsonResponse(to_contact(contact))
     
     elif request.method == 'POST':
