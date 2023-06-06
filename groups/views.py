@@ -15,9 +15,7 @@ def to_dict_group(group):
 def get_groups(request):
     if request.method == "GET":
         groups = Group.objects.all()
-        group_list = []
-        for group in groups:
-            group_list.append(to_dict_group(group))
+        group_list = [to_dict_group(group) for group in groups]
         return JsonResponse(group_list, safe=False)
     
 
